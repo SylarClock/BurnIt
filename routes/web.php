@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('index');
 });
+
+Route::resource('User', 'User');
+Route::resource('Review', 'Review');
+Route::resource('Comment', 'Comment');
