@@ -12,5 +12,5 @@
 */
 
 Route::get('/', function () {
-    return view('tratando');
+    return view('index');
 });
