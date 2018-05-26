@@ -1,0 +1,30 @@
+body{
+  background: black;
+
+}
+.perfil-ctr{
+	margin-top: 95px;
+	color: white;
+}
+
+.portada{
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.btn-grey{
+	background: none;
+	border: none;
+	color: #ccc;
+	font-size: 2em;
+}
+.btn-grey:hover{
+	color:white;
+}
+
+.bottom-info{
+	position: fixed;
+	bottom: 0;
+}

@@ -1,0 +1,28 @@
+.Comentarios-panel{
+	margin-bottom: 50px;
+}
+.comentar{
+	margin-bottom: 20px;
+	margin-top: 20px;
+	background: #ccc;
+	padding: 25px;
+}
+.comentarios-contenedor{
+
+}
+.comentar textarea{
+	width: 100%;
+}
+
+.comentario{
+	border-style: solid;
+	border-color: gold;
+	color: white;
+	margin-top: 15px;
+}
+.comentario img{
+	width: 100%;
+}
+.comentario .imgpnl{
+	padding: 15px;
+}
