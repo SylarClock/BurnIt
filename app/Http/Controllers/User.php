@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\UserModel;
 
 class User extends Controller
 {
     public function index()
     {
-         //return view('Registro');
+        $users = UserModel::All();
+         return view('Usuarios.index', compact('users'));
     }
 
     /**
@@ -30,7 +32,7 @@ class User extends Controller
      */
     public function store(Request $request)
     {
-        \App\UserModel::create([
+        UserModel::create([
         	'name' => $request['name'], 
         	'last_name' => $request['lastname'], 
         	'email' => $request['email'], 
@@ -38,7 +40,7 @@ class User extends Controller
         	'birth_day' =>$request['birthdate'],
         ]);
 
-        return "Usuario Registrado";
+        return redirect('/usuario')->with('message', 'store');//redireccionamos y mandamos un parametro llamado message
     }
 
     /**
@@ -61,6 +63,8 @@ class User extends Controller
     public function edit($id)
     {
         //
+        $user = UserModel::find($id);
+        return view('Usuarios.edit', ['user']);
     }
 
     /**
