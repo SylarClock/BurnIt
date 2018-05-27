@@ -12,9 +12,10 @@
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('tratando');
 });
+//Route::post('usuario/store', 'User.store');
 
-Route::resource('User', 'User');
+Route::resource('usuario', 'User');
 Route::resource('Review', 'Review');
 Route::resource('Comment', 'Comment');

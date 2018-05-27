@@ -24,7 +24,7 @@
     <div class="">
        <h3>Critica?</h3><h1 data-text="BURNIT" class="bg-img-txt">BURNIT</h1>
       <p>haz tu critica de una forma llamativa y compartela</p>
-      <p><a class="btn btn-warning btn-lg" href="registro.html" role="button">Registrarse</a></p>
+      <p><a class="btn btn-warning btn-lg" href="usuario/create" role="button">Registrarse</a></p>
     </div>
    
 </div>
