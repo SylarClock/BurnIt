@@ -24,6 +24,8 @@ class User extends Controller
         return view('Registro');
     }
 
+
+
     /**
      * Store a newly created resource in storage.
      *
@@ -32,15 +34,22 @@ class User extends Controller
      */
     public function store(Request $request)
     {
-        UserModel::create([
-        	'name' => $request['name'], 
-        	'last_name' => $request['lastname'], 
-        	'email' => $request['email'], 
-        	'password' => bcrypt($request['password']),
-        	'birth_day' =>$request['birthdate'],
-        ]);
+        if($request->ajax()){
+            return response()-json([
+                    "mesaje"=> $request->all(),
+            ]);
+        }else{
+            UserModel::create([
+                'name' => $request['name'], 
+                'last_name' => $request['lastname'], 
+                'email' => $request['email'], 
+                'password' => bcrypt($request['password']),
+                'birth_day' =>$request['birthdate'],
+            ]);
 
-        return redirect('/usuario')->with('message', 'store');//redireccionamos y mandamos un parametro llamado message
+            return redirect('/usuario')->with('message', 'store');//redireccionamos y mandamos un parametro llamado message
+        }
+        
     }
 
     /**
@@ -52,6 +61,8 @@ class User extends Controller
     public function show($id)
     {
         //
+        return view('Usuarios.profile');
+
     }
 
     /**
@@ -89,4 +100,9 @@ class User extends Controller
     {
         //
     }
+
+    public function AddAjax(){
+
+    }
+
 }

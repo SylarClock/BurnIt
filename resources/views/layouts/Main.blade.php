@@ -11,16 +11,16 @@
 	@yield('estilos')
 
 
-    <script src="{{ asset('js/jquery.js')}}"></script>
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="{{ asset('js/bootstrap.min.js')}}"></script>
 </head>
 <body style="padding-top:53px">
 	@yield('navbar')
 	@yield('content')
 
-	<script src="js/jquery.js"></script>
-	<script src="js/bootstrap.min.js"></script>
+    <script src="{{ asset('js/jquery.js')}}"></script>
+    <script src="{{ asset('js/bootstrap.min.js')}}"></script>
+
+
+    @yield('scripts')
 
 </body>
 </html>

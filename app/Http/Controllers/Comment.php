@@ -24,6 +24,12 @@ class Comment extends Controller
     public function create()
     {
         //
+
+        if($request->ajax()){
+            return response()-json([
+                    "mesaje"=> $request->all(),
+            ]);
+        }
     }
 
     /**

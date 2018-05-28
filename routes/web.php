@@ -16,6 +16,15 @@ Route::get('/', function () {
 });
 //Route::post('usuario/store', 'User.store');
 
+Route::post('prueba', 'AjaxFun@AddAjax');//Controlador@funcion
+
+
 Route::resource('usuario', 'User');
 Route::resource('Review', 'Review');
 Route::resource('Comment', 'Comment');
+
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
