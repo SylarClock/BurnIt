@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\UserModel;
+use Illuminate\Support\Facades\DB;
 
 class User extends Controller
 {
@@ -60,8 +61,12 @@ class User extends Controller
      */
     public function show($id)
     {
-        //
-        return view('Usuarios.profile');
+        //traer datos del usuario
+
+        $user = DB::table('users')->where('id', $id)->get();
+        return view('Usuarios.profile', [
+            'users' => $user,
+        ]);
 
     }
 

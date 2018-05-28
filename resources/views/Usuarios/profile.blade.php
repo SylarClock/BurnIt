@@ -48,7 +48,7 @@
 		   			<img src="{{ asset('resources/Profile.jpg') }}" class="img-circle">
 		   		</div>
 		   		<div class="col-lg-9">
-		   			<h1>Nombre Usuario</h1>
+		   			<h1>{!! $users[0]->name !!}</h1>
 		   			<button class="btn-grey" style="font-size: 1.5em" data-toggle="modal" data-target="#myModal">
 			   			<span class="glyphicon glyphicon-wrench"></span>
 			   		</button>
@@ -84,19 +84,19 @@
 		      			<div class="form-group">
 		      				<label for="nombre" class="col-sm-2 control-label">Nombre</label>
 						    <div class="col-sm-10">
-						      <input type="text" class="form-control" id="nombre" >
+						      <input type="text" class="form-control" id="nombre" value="{!! $users[0]->name !!}" >
 						    </div>
 		      			</div>
 		      			<div class="form-group">
 		      				<label for="Apellido" class="col-sm-2 control-label">Apellido</label>
 						    <div class="col-sm-10">
-						      <input type="text" class="form-control" id="Apellido">
+						      <input type="text" class="form-control" id="Apellido" value="{!! $users[0]->last_name !!}">
 						    </div>
 		      			</div>
 		      			<div class="form-group">
 		      				<label for="email" class="col-sm-2 control-label">Email</label>
 						    <div class="col-sm-10">
-						      <input type="email" class="form-control" id="email" >
+						      <input type="email" class="form-control" id="email" value="{!! $users[0]->email !!}">
 						    </div>
 		      			</div>
 		      			<div class="form-group">
