@@ -5,7 +5,7 @@
 @endsection
 
 @section('title')
-	<title>Profile</title>
+	<title>{{ Auth::user()->name }} - Profile</title>
 @endsection
 
 @section('navbar')

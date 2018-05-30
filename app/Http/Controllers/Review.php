@@ -14,6 +14,8 @@ class Review extends Controller
     public function index()
     {
         //
+        return view('makePost');
+
     }
 
     /**

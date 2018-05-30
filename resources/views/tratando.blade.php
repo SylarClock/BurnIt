@@ -11,6 +11,7 @@
     <title>Burn it</title>
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/main.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/fontawesome-all.min.css')}}">
 
     <script src="{{ asset('js/jquery.js')}}"></script>
     <!-- Latest compiled and minified JavaScript -->

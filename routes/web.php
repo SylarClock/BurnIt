@@ -22,6 +22,7 @@ Route::post('prueba', 'AjaxFun@AddAjax');//Controlador@funcion
 Route::resource('usuario', 'User');
 Route::resource('Review', 'Review');
 Route::resource('Comment', 'Comment');
+Route::resource('autent', 'AutentControl');
 
 
 
