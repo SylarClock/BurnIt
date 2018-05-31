@@ -48,10 +48,12 @@
 		   			<img src="{{ asset('resources/Profile.jpg') }}" class="img-circle">
 		   		</div>
 		   		<div class="col-lg-9">
-		   			<h1>{!! $users[0]->name !!}</h1>
+		   			<h1>{!! $users[0]->name . " ". $users[0]->last_name !!}</h1>
+		   		@if(Auth::user()->id == $users[0]->id )
 		   			<button class="btn-grey" style="font-size: 1.5em" data-toggle="modal" data-target="#myModal">
 			   			<span class="glyphicon glyphicon-wrench"></span>
 			   		</button>
+			   	@endif
 		   		</div>
 		   	</div>
 		   </div>
@@ -81,6 +83,7 @@
 		      </div>
 		      <div class="modal-body">
 		      		<div class="form-horizontal">
+						<input type="hidden" class="form-control" id="id" value="{!! Auth::user()->id !!}" >
 		      			<div class="form-group">
 		      				<label for="nombre" class="col-sm-2 control-label">Nombre</label>
 						    <div class="col-sm-10">
@@ -99,10 +102,16 @@
 						      <input type="email" class="form-control" id="email" value="{!! $users[0]->email !!}">
 						    </div>
 		      			</div>
+		          		<div class="form-group">
+		          			<label for="perfil" class="col-sm-2 control-label">Fecha de nacimiento</label>
+		    			    <div class="col-sm-10">
+		    			      <input type="date" name="birth_day" class="form-control" id="birth" value="{{ $users[0]->birth_day }}">
+		    			    </div>
+		          		</div>
 		      			<div class="form-group">
-		      				<label for="perfil" class="col-sm-2 control-label">Perfil</label>
+		      				<label for="perfil" class="col-sm-2 control-label">Contraseña</label>
 						    <div class="col-sm-10">
-						      <input type="file" class="form-control" id="perfil">
+						      <input type="password" class="form-control" id="pass">
 						    </div>
 		      			</div>
 		      		</div>

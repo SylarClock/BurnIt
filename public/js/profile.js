@@ -5,18 +5,22 @@ $("#grdMdl").click(function(){
 	debugger;
 
 	var nombre = $("#nombre").val();
-	var apellido = $("#nombre").val();
-	var email = $("#nombre").val();
-	var pass = "weeed";
+	var apellido = $("#Apellido").val();
+	var email = $("#email").val();
+	var pass = $("#pass").val();
+	var id = $("#id").val();
+	var birth = $("#birth").val();
 
 	var token = $("#token").val();
 	var url = $("#url").val();
 
 	var userEdit = {
+		id:id,
 		name: nombre,
 		last_name: apellido,
 		email: email,
 		password: pass,
+		birth_day: birth,
 	}
 
 	$.ajaxSetup({
@@ -32,7 +36,7 @@ $("#grdMdl").click(function(){
 		data: userEdit,
 		success: function(data){
 			debugger;
-		    alert('Items added');
+		    location.reload();
 		},
 		error: function(e){
 			debugger;
