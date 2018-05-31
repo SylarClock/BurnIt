@@ -114,15 +114,29 @@
 						      <input type="password" class="form-control" id="pass">
 						    </div>
 		      			</div>
+		      			<form action="{{ URL::to('upload') }}" method="post" enctype="multipart/form-data">
+		      				<label>Select image to upload:</label>
+						    <input type="file" name="file" id="file">
+						    <input type="submit" value="Upload" name="submit">
+							<input type="hidden" value="{{ csrf_token() }}" name="_token">
+		      			</form>
+		      			      	<div class="form-group">
+		      			      		<label for="perfil" class="col-sm-2 control-label">Perfil</label>
+		      					    <div class="col-sm-10">
+		      					      <input type="file" name="perfil" class="form-control" id="perfil">
+		      					    </div>
+		      			      	</div>
+		      			{!! Form::open(['id'=>'forinculo', 'enctype'=> 'multipart/form-data', 'method'=> 'POST']) !!}
+		      				<input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
+		      				<input type="hidden" name="_url" id="url" value="/prueba">
+		      			{!! Form::close() !!}
 		      		</div>
-		      		{!! Form::open() !!}
-		      			<input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
-		      			<input type="hidden" name="_url" id="url" value="/prueba">
-		      		{!! Form::close() !!}
+		      		
 		      </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
 		        <button type="button" id="grdMdl" class="btn btn-primary">GuardarCambios</button>
+		        <button type="button" id="foto" class="btn btn-primary">Foto</button>
 		      </div>
 		    </div>
 		  </div>
@@ -133,6 +147,7 @@
 
 @section('scripts')
 	<script src="{{ asset('js/profile.js')}}"></script>
+
 
 @endsection
 
