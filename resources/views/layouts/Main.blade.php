@@ -85,7 +85,7 @@
                   </form>
               </div>
                 <ul class="nav navbar-nav navbar-right">
-                  <li><a href=""><span>+</span></a></li>
+                  <li><a href="/Review/create"><span>+</span></a></li>
                 <li><a href="/usuario/{{ Auth::user()->id }}" class="profile">
                   <img src="{{ asset('resources/Profile.jpg') }}" class="img-circle ">
                   <span>{{ Auth::user()->name }}</span>
