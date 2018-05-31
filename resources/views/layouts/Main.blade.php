@@ -8,6 +8,8 @@
     @yield('title')
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/main.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/fontawesome-all.min.css')}}">
+
 	@yield('estilos')
 
 
@@ -84,11 +86,11 @@
               </div>
                 <ul class="nav navbar-nav navbar-right">
                   <li><a href=""><span>+</span></a></li>
-                <li><a href="#" class="profile">
+                <li><a href="/usuario/{{ Auth::user()->id }}" class="profile">
                   <img src="{{ asset('resources/Profile.jpg') }}" class="img-circle ">
                   <span>{{ Auth::user()->name }}</span>
                 </a></li>
-                <li><a alt="Cerrar session" style="cursor: pointer;"><i class="fas fa-sign-out-alt"></i></a></li>
+                <li><a alt="Cerrar session" href="/logout" style="cursor: pointer;"><i class="fas fa-sign-out-alt"></i></a></li>
                 </ul>
              
            </div>

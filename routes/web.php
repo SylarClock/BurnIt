@@ -12,7 +12,10 @@
 */
 
 Route::get('/', function () {
-    return view('tratando');
+	if(!Auth::user())
+    	return view('tratando');
+    else
+    	return view('tratando');
 });
 //Route::post('usuario/store', 'User.store');
 
@@ -23,6 +26,8 @@ Route::resource('usuario', 'User');
 Route::resource('Review', 'Review');
 Route::resource('Comment', 'Comment');
 Route::resource('autent', 'AutentControl');
+
+Route::get('logout', 'AutentControl@logout');
 
 
 

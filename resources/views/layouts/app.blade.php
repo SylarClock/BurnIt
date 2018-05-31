@@ -83,7 +83,7 @@
               <img src="resources/Profile.jpg" onclick="window.location.href = '/';" class="img-circle ">
               <span>{{ Auth::user()->name }}</span>
             </a></li>
-            <li><a alt="Cerrar session" style="cursor: pointer;"><i class="fas fa-sign-out-alt"></i></a></li>
+            <li><a alt="Cerrar session" href="/logout" style="cursor: pointer;"><i class="fas fa-sign-out-alt"></i></a></li>
             </ul>
          
        </div>

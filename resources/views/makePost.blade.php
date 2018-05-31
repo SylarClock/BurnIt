@@ -40,14 +40,14 @@
    <div class="container-fluid" style="margin-top: 70px;">
 
    	<div class="col-lg-12 text-center">
-   		<img src="resources/Profile.jpg" class="img-circle" style="height: 15px;">
+   		<img src="{{ asset('resources/Profile.jpg') }}" class="img-circle" style="height: 15px;">
    		<label style="color: white">Nombre Usuario</label>
 
    	</div>
    </div>
 
 	
-   <div class="portada-critica" style="background-image: url(resources/prueba2.jpg); ">
+   <div class="portada-critica" style="background-image: url({{ asset('resources/here.jpg') }}); ">
    	
    	<div style="color:white; font-size: 35px; position: absolute; top: 25px; left: 10px;
    	">
@@ -72,7 +72,7 @@
  				</div>
  				<div class="col-lg-6 img-panel" style="height: 450px;">
  					<div class="center-img-file">
- 						<img src="resources/FishEye.png">
+ 						<img src="{{ asset('resources/here.jpg') }}">
  					</div>
  					<input type="file" name="">
  					
@@ -85,7 +85,7 @@
  				
  				<div class="col-lg-6 img-panel" style="height: 450px;">
  					<div class="center-img-file">
- 						<img src="resources/FishEye.png">
+ 						<img src="{{ asset('resources/here.jpg') }}">
  					</div>
  					<input type="file" name="">
  					
@@ -103,7 +103,7 @@
  				</div>
  				<div class="col-lg-6 img-panel" style="height: 450px;">
  					<div class="center-img-file">
- 						<img src="resources/transistor.jpg">
+ 						<img src="{{ asset('resources/here.jpg') }}">
  					</div>
  					<input type="file" name="">
  					
