@@ -277,6 +277,7 @@ ul{
 
   .profile img{
     height: 25px;
+    width: 25px;
 }
  
 @media screen and (max-width: 900px){

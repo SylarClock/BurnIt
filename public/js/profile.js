@@ -20,7 +20,7 @@ var options = {
  });
 
 $("#grdMdl").click(function(){
-
+	debugger;
 
 	var nombre = $("#nombre").val();
 	var apellido = $("#Apellido").val();

@@ -96,7 +96,7 @@ class Review extends Controller
         ]);
         
 
-        echo $request['file1'];
+        return redirect('/');
     }
 
     /**
