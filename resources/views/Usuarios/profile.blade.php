@@ -33,7 +33,11 @@
 @endsection
 
 @section('content')
+		@if($users[0]->portada == "")
 	   <img src="{{ asset('resources/transistor.jpg') }}" class="portada">
+	   @else
+	   <img src="{{ asset('uploads/portada/'. $users[0]->portada) }}" class="portada">
+	   @endif
 
 
 	   <div class="container-fluid perfil-ctr">
@@ -45,7 +49,11 @@
 		   <div class="row">
 		   	<div class="col-lg-12">
 		   		<div class="col-lg-3">
-		   			<img src="{{ asset('resources/Profile.jpg') }}" class="img-circle">
+		   			@if($users[0]->perfil == "")
+		   			<img src="{{ asset('resources/Profile.jpg') }}" class="img-circle prof_img">
+		   			@else
+		   			<img src="{{ asset('uploads/perfil/'.$users[0]->perfil) }}" class="img-circle prof_img">
+		   			@endif
 		   		</div>
 		   		<div class="col-lg-9">
 		   			<h1>{!! $users[0]->name . " ". $users[0]->last_name !!}</h1>
@@ -115,17 +123,31 @@
 						    </div>
 		      			</div>
 		      			<form action="{{ URL::to('upload') }}" method="post" enctype="multipart/form-data">
-		      				<label>Select image to upload:</label>
-						    <input type="file" name="file" id="file">
-						    <input type="submit" value="Upload" name="submit">
+		      				<div class="form-group">
+		      					<label for="perfil" class="col-sm-2 control-label">Perfil</label>
+		      					<div class="col-sm-8">
+		      					  <input type="file" name="file" class="form-control" id="perfil">
+		      					</div>
+		      					<div class="col-sm-2">
+						    		<input type="submit" value="Subir" class="btn btn-warning col-xs-12" name="submit">
+		      					</div>
+		      				</div>
 							<input type="hidden" value="{{ csrf_token() }}" name="_token">
 		      			</form>
-		      			      	<div class="form-group">
-		      			      		<label for="perfil" class="col-sm-2 control-label">Perfil</label>
-		      					    <div class="col-sm-10">
-		      					      <input type="file" name="perfil" class="form-control" id="perfil">
-		      					    </div>
-		      			      	</div>
+
+		      			<form action="{{ URL::to('uploadPortada') }}" method="post" enctype="multipart/form-data">
+		      				<div class="form-group">
+		      					<label for="perfil" class="col-sm-2 control-label">Portada</label>
+		      					<div class="col-sm-8">
+		      					  <input type="file" name="file" class="form-control" >
+		      					</div>
+		      					<div class="col-sm-2">
+						    		<input type="submit" value="Subir" class="btn btn-warning col-xs-12" name="submit">
+		      					</div>
+		      				</div>
+							<input type="hidden" value="{{ csrf_token() }}" name="_token">
+		      			</form>
+		      			      	
 		      			{!! Form::open(['id'=>'forinculo', 'enctype'=> 'multipart/form-data', 'method'=> 'POST']) !!}
 		      				<input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
 		      				<input type="hidden" name="_url" id="url" value="/prueba">
@@ -136,7 +158,6 @@
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
 		        <button type="button" id="grdMdl" class="btn btn-primary">GuardarCambios</button>
-		        <button type="button" id="foto" class="btn btn-primary">Foto</button>
 		      </div>
 		    </div>
 		  </div>
@@ -146,7 +167,7 @@
 
 
 @section('scripts')
-	<script src="{{ asset('js/profile.js')}}"></script>
+	<script src="{{ asset('js/makeReview.js')}}"></script>
 
 
 @endsection

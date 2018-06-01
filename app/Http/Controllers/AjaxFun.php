@@ -43,13 +43,33 @@ class AjaxFun extends Controller
     public function upload(){
 
         if(Input::hasFile('file')){
-
-            echo 'Uploaded';
+            $id = Auth::user()->id;
+            
             $file = Input::file('file');
-            $file->move('uploads/perfil', Auth::user()->id .".". $file->getClientOriginalExtension());
-            echo '';
-        }
+            $newFileName = $id .".". $file->getClientOriginalExtension();
 
+            $file->move('uploads/perfil', $newFileName);
+            //insertar en db
+            DB::table('users')->where('id', $id)->update(['perfil'=> $newFileName]);
+
+            return redirect('/usuario/'. $id);//redireccionamos y mandamos un parametro llamado message 
+        }
+    }
+
+    public function uploadPortada(){
+
+        if(Input::hasFile('file')){
+            $id = Auth::user()->id;
+            
+            $file = Input::file('file');
+            $newFileName = $id .".". $file->getClientOriginalExtension();
+
+            $file->move('uploads/portada', $newFileName);
+            //insertar en db
+            DB::table('users')->where('id', $id)->update(['portada'=> $newFileName]);
+
+            return redirect('/usuario/'. $id);//redireccionamos y mandamos un parametro llamado message 
+        }
     }
 
 

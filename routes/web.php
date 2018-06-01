@@ -21,7 +21,8 @@ Route::get('/', function () {
 
 Route::post('prueba', 'AjaxFun@AddAjax');//Controlador@funcion
 
-Route::post('upload', 'AjaxFun@upload');
+Route::post('upload', 'AjaxFun@upload');//perfil
+Route::post('uploadPortada', 'AjaxFun@uploadPortada');//portada
 
 
 Route::resource('usuario', 'User');

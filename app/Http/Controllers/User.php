@@ -48,7 +48,7 @@ class User extends Controller
                 'birth_day' =>$request['birthdate'],
             ]);
 
-            return redirect('/usuario')->with('message', 'store');//redireccionamos y mandamos un parametro llamado message
+            return redirect('/');//redireccionamos y mandamos un parametro llamado message
         }
         
     }

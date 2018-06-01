@@ -87,7 +87,11 @@
                 <ul class="nav navbar-nav navbar-right">
                   <li><a href="/Review/create"><span>+</span></a></li>
                 <li><a href="/usuario/{{ Auth::user()->id }}" class="profile">
+                  @if(Auth::user()->perfil == "")
                   <img src="{{ asset('resources/Profile.jpg') }}" class="img-circle ">
+                  @else
+                  <img src="{{ asset('uploads/perfil/'.Auth::user()->perfil) }}" class="img-circle ">
+                  @endif
                   <span>{{ Auth::user()->name }}</span>
                 </a></li>
                 <li><a alt="Cerrar session" href="/logout" style="cursor: pointer;"><i class="fas fa-sign-out-alt"></i></a></li>

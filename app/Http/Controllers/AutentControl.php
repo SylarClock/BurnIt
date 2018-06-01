@@ -11,10 +11,10 @@ class AutentControl extends Controller
     //
     public function store(Request $request){
     	if(Auth::attempt(['email' => $request->email, 'password' => $request->pass])){
-    		return redirect('/');
+    		return redirect('/usuario/'. Auth::user()->id );
     	}
     	else{
-    		echo 'no es';
+    		return redirect('/');
     	}
     }
     public function logout(){
