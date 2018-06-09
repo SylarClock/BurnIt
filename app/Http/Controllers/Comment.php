@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Comment as Comentarios;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+
 
 class Comment extends Controller
 {
@@ -41,6 +45,14 @@ class Comment extends Controller
     public function store(Request $request)
     {
         //
+        Comentarios::create([
+                'description' => $request['comentario'], 
+                'rate' => $request['rating'], 
+                'active' => 1, 
+                'user_id' => Auth::user()->id,
+                'post_id' =>$request['post_id'],
+            ]);
+        
     }
 
     /**

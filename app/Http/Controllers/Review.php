@@ -81,8 +81,9 @@ class Review extends Controller
         }
         
             
-        DB::table('posts')->insert([
+        $last_id = DB::table('posts')->insertGetId([
             'title' => $title,
+            'portada' => $portname,
             'description' => $desc,
             'block' => $bloq1,
             'block2' => $bloq2,
@@ -95,8 +96,7 @@ class Review extends Controller
             'category_id' => 1,
         ]);
         
-
-        return redirect('/');
+        return redirect('/Review/'. $last_id);
     }
 
     /**
@@ -108,6 +108,17 @@ class Review extends Controller
     public function show($id)
     {
         //
+        // $user = DB::table('users')->where('id', $id)->get();
+        // return view('Usuarios.profile', [
+        //     'users' => $user,
+        // ]);
+
+        $review = DB::table('posts')->where('id', $id)->get();
+
+        $comentarios = DB::select('CALL sp_get_commentarios_post(?)', [$id]);
+
+        return view('Review.review', ['review' => $review, 'comentarios' => $comentarios]);
+
     }
 
     /**
