@@ -24,13 +24,13 @@
    <div class="container-fluid" style="margin-top: 70px;">
 
    	<div class="col-lg-12 text-center">
-   		@if(Auth::user()->perfil == "")
+   		@if($maker[0]->perfil == "")
    		<img src="{{ asset('resources/Profile.jpg') }}" class="img-circle " style="height: 15px;">
    		@else
-   		<img src="{{ asset('uploads/perfil/'.Auth::user()->perfil) }}" class="img-circle " style="height: 15px;">
+   		<img src="{{ asset('uploads/perfil/'.$maker[0]->perfil) }}" class="img-circle " style="height: 15px;">
    		@endif
 
-   		<label style="color: white">{!! Auth::user()->name !!}</label>
+   		<label style="color: white"><a href="/usuario/{!! $maker[0]->id !!}">{!! $maker[0]->name . ' ' . $maker[0]->last_name !!}</a></label>
 
    	</div>
    </div>
@@ -184,14 +184,29 @@
    						</div>
    						<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
    							<span class="pull-right">{!! $comentario->created_at !!}</span>
-   							<h5><strong>{!! $comentario->name !!}</strong></h5>
-   							<div>
-   								<span class="glyphicon glyphicon-star"></span>
-   								<span class="glyphicon glyphicon-star"></span>
-   								<span class="glyphicon glyphicon-star"></span>
-   								<span class="glyphicon glyphicon-star"></span>
-   								<span class="glyphicon glyphicon-star"></span>
-   							</div>
+   							<h5><strong><a href="/usuario/{!! $comentario->user_id !!}">{!! $comentario->name !!}</a></strong></h5>
+                        <div><h5><strong style="color: gold;">
+                           @switch($comentario->rate)
+                              @case(1)
+                                 Malo
+                                 @break
+                              @case(2)
+                                 Mediocre
+                                 @break 
+                              @case(3)
+                                 OK
+                                 @break
+                              @case(4)
+                                 Bueno
+                                 @break
+                              @case(5)
+                                 Asombroso!
+                                 @break
+                              @default
+                                 Default case...
+                           @endswitch
+                        </strong></h5></div>
+   							
    							<p>{!! $comentario->description !!}</p>
    						</div>
    					</div>

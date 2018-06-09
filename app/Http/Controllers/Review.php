@@ -114,10 +114,11 @@ class Review extends Controller
         // ]);
 
         $review = DB::table('posts')->where('id', $id)->get();
+        $maker = DB::table('users')->select('id', 'name', 'last_name', 'perfil')->where('id', $review[0]->user_id)->get();
 
         $comentarios = DB::select('CALL sp_get_commentarios_post(?)', [$id]);
 
-        return view('Review.review', ['review' => $review, 'comentarios' => $comentarios]);
+        return view('Review.review', ['review' => $review, 'comentarios' => $comentarios, 'maker' => $maker]);
 
     }
 
