@@ -17,6 +17,7 @@ Route::get('/', 'HomeController@index');
 Route::post('prueba', 'AjaxFun@AddAjax');//Controlador@funcion
 
 Route::post('upload', 'AjaxFun@upload');//perfil
+Route::post('search', 'AjaxFun@search');//perfil
 Route::post('uploadPortada', 'AjaxFun@uploadPortada');//portada
 
 

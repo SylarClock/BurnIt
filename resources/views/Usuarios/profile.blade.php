@@ -58,7 +58,7 @@
 		   		<div class="col-lg-9">
 		   			<h1>{!! $users[0]->name . " ". $users[0]->last_name !!}</h1>
 		   		@if(Auth::user()->id == $users[0]->id )
-		   			<button class="btn-grey" style="font-size: 1.5em" data-toggle="modal" data-target="#myModal">
+		   			<button class="btn-grey" style="font-size: 1.5em" id="btn_shw_modal" data-toggle="modal" data-target="#myModal">
 			   			<span class="glyphicon glyphicon-wrench"></span>
 			   		</button>
 			   	@endif

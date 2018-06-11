@@ -31,6 +31,7 @@ class AjaxFun extends Controller
 
         if($_POST['password'] != ""){
     		$pass = bcrypt($_POST['password']);
+
         	DB::table('users')->where('id', $id)->update(['password'=> $pass]);
         }
 
@@ -38,6 +39,47 @@ class AjaxFun extends Controller
     	echo json_encode($_POST);
 
 
+    }
+
+    public function search(Request $request){
+        $like = $_POST['search'];
+
+        $posts = DB::table('posts')
+                    ->select('id', 'title', 'portada')
+                    ->where('title', 'like', '%'. $like .'%')->get();
+
+        $profiles = DB::table('users')
+                        ->select('id', 'name', 'last_name', 'perfil')
+                        ->where('name', 'like', '%'. $like .'%')
+                        ->orWhere('last_name', 'like', '%'. $like .'%')->get();
+
+        $results = count($posts) > 0 ? "<li class='srch-section'><div><h5><strong>Criticas</strong></h5></div></li>" : "";
+
+        foreach ($posts as $post) {
+            $results.= "<li class='srch-res'>";
+            $results.= "<a href='/Review/". $post->id ."'>";
+            $results.= "<div class='row'><div class='col-lg-2 col-md-3 col-sm-4 col-xs-5 center-block'>";
+            $results.= "<img src=". asset('uploads/Review/' . $post->portada) ." class='img-circle'></div>"
+                        ."<div class='col-lg-10 col-md-9 col-sm-8 col-xs-7'><h5>". $post->title ."</h5></div></div></a></li>";
+        }
+
+        $results.= count($profiles) > 0 ? "<li class='srch-section'><div><h5><strong>Usuarios</strong></h5></div></li>":"";
+
+        foreach ($profiles as $profile) {
+            $results.="<li class='srch-res'><a href='/usuario/". $profile->id ."'>"
+                        ."<div class='row'><div class='col-lg-2 col-md-3 col-sm-4 col-xs-5 center-block'>"
+                        ."<img src='"; 
+            if($profile->perfil!="")
+                $results.= asset('uploads/perfil/'. $profile->perfil );
+            else
+                $results.= asset('resources/Profile.jpg');
+
+            $results.= "' class='img-circle'></div><div class='col-lg-10 col-md-9 col-sm-8 col-xs-7'>"
+                        ."<h5>" . $profile->name . " " . $profile->last_name ."</h5></div></div></a></li>";
+        }
+
+
+        echo json_encode($results);
     }
 
     public function upload(){
@@ -55,6 +97,8 @@ class AjaxFun extends Controller
             return redirect('/usuario/'. $id);//redireccionamos y mandamos un parametro llamado message 
         }
     }
+
+
 
     public function uploadPortada(){
 
