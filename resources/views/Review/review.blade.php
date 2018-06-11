@@ -153,7 +153,7 @@
    			<div class="col-lg-12">
    				<div class="col-lg-12">
    				<div class="col-lg-12 comentarios-contenedor">
-   					<div class="comentar">
+   					<div class="comentar" id="comment_made">
                   {!!Form::open(['route' =>'Comment.store', 'method' => 'POST'])!!}
 
    						<textarea placeholder="Comenta" name="comentario"></textarea>

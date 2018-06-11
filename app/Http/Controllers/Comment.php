@@ -52,7 +52,7 @@ class Comment extends Controller
                 'user_id' => Auth::user()->id,
                 'post_id' =>$request['post_id'],
             ]);
-        
+        return redirect('/Review/'. $request['post_id'].'#comment_made');
     }
 
     /**
