@@ -139,6 +139,16 @@ span.glyphicon-star, .glyphicon-star-empty{
   color:gold;
 }
 
+@media only screen and (max-width: 505px) {
+  .item-mst-prof
+  {
+    display: none;
+  }
+  .item-mst-list .pull-right{
+    display: none;
+  }
+}
+
 @media only screen and (max-width: 650px) {
   .slider{
     height: 35vh;
@@ -157,9 +167,23 @@ span.glyphicon-star, .glyphicon-star-empty{
   .caption div, .slider .caption p{
     display: none;
   }
-  
-  /*.slider .caption{
-    top:-10%;
-  }*/
-
+  .slideshow{
+    height: 38vh;
+  }
+  .item-mst-list{
+    border-style: none;
+    background-image: none !important;
+  }
+  .item-mst-list > div{
+    margin-bottom: 10px;
+  }
+}
+@media only screen and (max-width: 1200px) {
+  .item-mst-list{
+    border-style: none;
+    background-image: none !important;
+  }
+  .item-mst-list > div{
+    margin-bottom: 10px;
+  }
 }

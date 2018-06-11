@@ -266,6 +266,15 @@ ul{
   	text-shadow:  0 0 20px #ff9900;
   	word-wrap: break-word;
   }
+  .fire_letter{
+  	color: rgba(255, 255, 255, 0.1);
+  	background: url('../resources/bg_h1.jpg');
+  	-webkit-background-clip: text;
+  	background-repeat: repeat-x;
+  	animation: fireAnim 2s linear infinite;
+  	text-shadow:  0 0 20px #ff9900;
+  	word-wrap: break-word;
+  }
 @keyframes fireAnim{
   	0%{
   		background-position: left 0px top 0px;

@@ -11,12 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-	if(!Auth::user())
-    	return view('tratando');
-    else
-    	return view('tratando');
-});
+Route::get('/', 'HomeController@index');
 //Route::post('usuario/store', 'User.store');
 
 Route::post('prueba', 'AjaxFun@AddAjax');//Controlador@funcion
