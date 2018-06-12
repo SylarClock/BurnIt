@@ -81,9 +81,9 @@ class Review extends Controller
             $portname = str_random(15). "." . $portada1->getClientOriginalExtension();
             $portada1->move('uploads/Review', $portname);
         }
+        echo $portname;
         
-            
-        $last_id = DB::table('posts')->insertGetId([
+        $last_post = Posts::create([
             'title' => $title,
             'portada' => $portname,
             'description' => $desc,
@@ -97,9 +97,25 @@ class Review extends Controller
             'rate' => $rate,
             'category_id' => 1,
             'activo' => false,
-        ]);
+            ]);
+            
+        // $last_id = DB::table('posts')->insertGetId([
+        //     'title' => $title,
+        //     'portada' => $portname,
+        //     'description' => $desc,
+        //     'block' => $bloq1,
+        //     'block2' => $bloq2,
+        //     'block3' => $bloq3,
+        //     'path_media' => $imgName1,
+        //     'path_media2' => $imgName2,
+        //     'path_media3' => $imgName3,
+        //     'user_id'   =>Auth::user()->id,
+        //     'rate' => $rate,
+        //     'category_id' => 1,
+        //     'activo' => false,
+        // ]);
         
-        return redirect('/Review/'. $last_id);
+        return redirect('/Review/'. $last_post->id);
     }
 
     /**
