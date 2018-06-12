@@ -31,7 +31,8 @@ class Review extends Controller
      */
     public function create()
     {
-        return view('makePost');
+        $categories = DB::table('categories')->get();
+        return view('makePost', ['categories'=> $categories]);
         
     }
 
@@ -82,6 +83,8 @@ class Review extends Controller
             $portada1->move('uploads/Review', $portname);
         }
         echo $portname;
+
+        $categoria = $request['categoria'];
         
         $last_post = Posts::create([
             'title' => $title,
@@ -95,8 +98,8 @@ class Review extends Controller
             'path_media3' => $imgName3,
             'user_id'   =>Auth::user()->id,
             'rate' => $rate,
-            'category_id' => 1,
-            'activo' => false,
+            'category_id' => $categoria,
+            'activo' => true,
             ]);
             
         // $last_id = DB::table('posts')->insertGetId([
@@ -150,10 +153,11 @@ class Review extends Controller
     public function edit($id)
     {
         //
+        $categories = DB::table('categories')->get();
         $review = DB::table('posts')->where('id', $id)->get();
         $maker = DB::table('users')->select('id', 'name', 'last_name', 'perfil')->where('id', $review[0]->user_id)->get();
 
-        return view('Review.editreview', ['review' => $review, 'maker' => $maker]);
+        return view('Review.editreview', ['review' => $review, 'maker' => $maker, 'categories' => $categories]);
     }
 
     /**
@@ -210,7 +214,8 @@ class Review extends Controller
         $editPost = Posts::find($id);
 
          $editPost->title = $title;
-         $editPost->portada = $portname;
+         if($portname!="")
+            $editPost->portada = $portname;
          $editPost->description = $desc;
          $editPost->block = $bloq1;
          $editPost->block2 = $bloq2;

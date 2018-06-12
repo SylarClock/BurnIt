@@ -6,6 +6,10 @@
 @endsection
 
 @section('estilos')
+<link rel="stylesheet" href="{{ asset('css/themes/fontawesome-stars.css') }}">
+<link rel="stylesheet" href="{{ asset('css/themes/bars-1to10.css') }}">
+<link rel="stylesheet" href="{{ asset('css/themes/bars-movie.css') }}">
+<link rel="stylesheet" href="{{ asset('css/themes/bars-horizontal.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/CrearCritica.css')}}">
 @endsection
 
@@ -96,9 +100,16 @@
 
    <div class="container-fluid resultado">
    	<div class="row">
-   		<div class="col-lg-6 col-lg-offset-3 cal-cont" >
-   			<input type="number" placeholder="Calificación" class="calificacion-cr" name="calificacion" id="calif" value="{!! $review[0]->rate !!}">
-   		</div>
+   		<div class="col-lg-6 col-lg-offset-5 col-md-6 col-md-offset-5 col-sm-6 col-sm-offset-5 col-xs-12 col-xs-offset-2 cal-cont" >
+            <select id="example2" name="calificacion" autocomplete="off">
+               <option value="1">Malo</option>
+               <option value="2">Mediocre</option>
+               <option value="3">OK</option>
+               <option value="4">Bueno</option>
+               <option value="5">Asombroso</option>
+            </select>
+
+         </div>
    		<div class="col-lg-3"></div>
    	</div>
    </div>
@@ -124,6 +135,19 @@
 	      			</div>
 	      			
 	      		</div>
+               <div class="form-group">
+                     <label for="nombre" class="col-sm-2 control-label">Categoria</label>
+                  <div class="col-sm-10">
+                    <select id="categ" name="categoria" class="form-control col-xs-12">
+                    
+                    @if(count($categories)>0)
+                    @foreach ($categories as $categoria)
+                       <option value="{!! $categoria->id !!}" @if($review[0]->category_id == $categoria->id) selected @endif>{!! $categoria->name !!}</option>
+                    @endforeach
+                    @endif
+                    </select>
+                  </div>
+               </div>
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
@@ -138,6 +162,25 @@
 
 
 @section('scripts')
-	<script src="{{ asset('js/makeReview.js')}}"></script>
+	  <script src="{{ asset('js/makeReview.js')}}"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+      <script src="{{ asset('js/jquery.barrating.min.js') }}"></script>
+      <script type="text/javascript">
+        $(function() {
+           $('#example').barrating({
+             theme: 'bars-movie',
+             initialRating: '1',
+             showSelectedRating: true,
+           });
+         });
+        $(function() {
+           $('#example2').barrating({
+             theme: 'bars-1to10',
+             
+           });
+        $('#example2').barrating('set', '{!! $review[0]->rate !!}');
+           
+         });
 
+      </script>
 @endsection

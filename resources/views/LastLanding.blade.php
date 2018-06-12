@@ -26,9 +26,9 @@
                 	        	<img class="img-circle" src="{{ asset('resources/Profile.jpg') }}"><strong>{!! $best->nombre !!}</strong>
                 	        @endif
                 	        </div>
-                	        <button class="btn btn-warning">
+                	        <a href="/Review/{!! $best->id !!}" class="btn btn-warning">
                 	        	<span class="glyphicon glyphicon-eye-open"></span>
-                	        </button>
+                	        </a>
                 	    </section>
                 	</li>
           		@endforeach
@@ -51,7 +51,7 @@
 	   <div class="container-fluid">
 			<div class="row">
 				<div class="col-xs-12 col-md-12 col-sm-12 col-lg-12 text-center">
-					<h2 style="color: gold">Lasted Updated</h2>
+					<h2 style="color: gold">Ultimos Agregados</h2>
 				</div>
 				<div class="col-xs-12 mstView-ctnr">
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ctnr-view">

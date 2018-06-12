@@ -89,7 +89,7 @@
 		   								<a href="/Review/{!! $post->id !!}">{!! $post->title !!}</a>
 		   							</td>
 		   							<td>{!! $post->description !!}</td>
-		   							<td>asdasdsa</td>
+		   							<td>{!! $post->created_at !!}</td>
 		   							<td>
 		   								<a href="/Review/{!! $post->id !!}/edit" class="col-xs-6 btn btn-warning"><i class="fa fa-pencil"></i> Editar</a>
 		   								{!! Form::open(['route'=> ['Review.destroy', $post->id], 'method' => 'DELETE']) !!}
