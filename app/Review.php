@@ -11,7 +11,7 @@ class Review extends Model
     protected $table = 'posts';
 
     protected $fillable = [
-        'title', 'descripcion', 'block', 'block2', 'block3', 'path_media', 'path_media2', 'path_media3', 'rate', 'category_id', 
+        'title', 'descripcion', 'portada', 'description', 'block', 'block2', 'block3', 'path_media', 'path_media2', 'path_media3', 'rate', 'category_id', 
         'user_id',
     ];
 
