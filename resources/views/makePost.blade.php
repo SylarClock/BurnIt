@@ -31,7 +31,7 @@
    	</div>
    </div>
 
-	<input type="file" name="portada1" id="backCover">
+	<input type="file" name="portada1" id="backCover" required>
    <div class="portada-critica" style="background-image: url({{ asset('resources/here.jpg') }});" id="bckg_1">
    	
    	<div style="color:white; font-size: 35px; position: absolute; top: 25px; left: 10px;
@@ -44,7 +44,7 @@
    			<div class="tooltip-arrow" style="left: 50%"></div>
    			<div class="tooltip-inner">Titulo</div>
    		</div>
-   		<input type="text" name="title" id="Titulo" >
+   		<input type="text" name="title" id="Titulo" required>
    		
    	</div>
    </div>
@@ -53,13 +53,13 @@
  		<div class="row panel1">
  			<div class="col-xs-12 col-md-12 col-lg-10 col-lg-offset-1 ">
  				<div class="col-lg-6">
- 					<textarea placeholder="Requerido" name="bloq1" class="panel1txt" id="bloqTxt1"></textarea>
+ 					<textarea placeholder="Requerido" name="bloq1" class="panel1txt" id="bloqTxt1" required></textarea>
  				</div>
  				<div class="col-lg-6 img-panel" style="height: 450px;">
  					<div class="center-img-file">
  						<img src="{{ asset('resources/here.jpg') }}" id="img_1">
  					</div>
- 					<input type="file" name="file1" id="imgFile1">
+ 					<input type="file" name="file1" id="imgFile1"required>
  					
  				</div>
  			</div>
@@ -130,7 +130,7 @@
 	      			<div class="form-group">
 	      				<label for="nombre" class="col-sm-2 control-label">Descripción breve</label>
 					    <div class="col-sm-10">
-					      <input type="text" class="form-control" id="descrip" name="descripcion">
+					      <input type="text" class="form-control" id="descrip" name="descripcion" required>
 					    </div>
 	      			</div>
 	      		</div>
