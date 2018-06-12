@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input  as Input;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use App\Review as Posts;
+
 
 
 class Review extends Controller
@@ -131,6 +133,10 @@ class Review extends Controller
     public function edit($id)
     {
         //
+        $review = DB::table('posts')->where('id', $id)->get();
+        $maker = DB::table('users')->select('id', 'name', 'last_name', 'perfil')->where('id', $review[0]->user_id)->get();
+
+        return view('Review.editreview', ['review' => $review, 'maker' => $maker]);
     }
 
     /**
@@ -143,6 +149,70 @@ class Review extends Controller
     public function update(Request $request, $id)
     {
         //
+
+        $title = $request['title'];
+
+        $bloq1 = $request['bloq1'];
+        $bloq2 = $request['bloq2'];
+        $bloq3 = $request['bloq3'];
+
+        $desc = $request['descripcion'];
+        $rate = $request['calificacion'];
+
+        $imgName1= "";
+        $imgName2= "";
+        $imgName3= "";
+
+
+        $portname= "";
+
+        if(Input::hasFile('file1')){
+            $file1 = Input::file('file1');
+            $imgName1 = str_random(15). "." . $file1->getClientOriginalExtension();
+            $file1->move('uploads/Review', $imgName1);
+        }
+
+        if(Input::hasFile('file2')){
+            $file2 = Input::file('file2');
+            $imgName2 = str_random(15). "." . $file2->getClientOriginalExtension();
+            $file2->move('uploads/Review', $imgName2);
+        }
+
+        if(Input::hasFile('file3')){
+            $file3 = Input::file('file3');
+            $imgName3 = str_random(15). "." . $file3->getClientOriginalExtension();
+            $file3->move('uploads/Review', $imgName3);
+        }
+
+        if(Input::hasFile('portada1')){
+            $portada1 = Input::file('portada1');
+            $portname = str_random(15). "." . $portada1->getClientOriginalExtension();
+            $portada1->move('uploads/Review', $portname);
+        }
+        
+        $editPost = Posts::find($id);
+
+         $editPost->title = $title;
+         $editPost->portada = $portname;
+         $editPost->description = $desc;
+         $editPost->block = $bloq1;
+         $editPost->block2 = $bloq2;
+         $editPost->block3 = $bloq3;
+         if($imgName1!="")
+            $editPost->path_media = $imgName1;
+         if($imgName2!="")
+            $editPost->path_media2 = $imgName2;
+         if($imgName3!="")
+            $editPost->path_media3 = $imgName3;
+         $editPost->rate = $rate;
+
+        $editPost->save();
+
+        
+        return redirect('/Review/'. $id);
+
+
+        
     }
 
     /**

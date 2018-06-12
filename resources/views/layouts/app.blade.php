@@ -60,7 +60,6 @@
         <div class="input-group">
           <div class="input-group-addon" style="color: orange; background-color: black; border: black;"><i class="fas fa-lock"></i></div>
             <input type="password" class="form-control" name="pass" id="IniPass" placeholder="Contraseña">
-
         </div>
       </div>
       <button type="submit" class="btn btn-success col-xs-12"><i class="fas fa-check-circle"></i></button>
