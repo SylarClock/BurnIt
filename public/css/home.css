@@ -108,6 +108,7 @@ body{
   width: 85%;
   margin: auto;
   padding: auto;
+  max-height: 125px;
 
 }
 .item-mst-list{

@@ -180,7 +180,7 @@
 
    					<div class="row comentario">
    						<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 imgpnl">
-   							<img class="img-circle" src="{!! asset('uploads/perfil/'. $comentario->perfil) !!}">
+   							<img class="img-circle" src="{!! $comentario->perfil!=""? asset('uploads/perfil/'. $comentario->perfil):  asset('resources/Profile.jpg')!!}">
    						</div>
    						<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
    							<span class="pull-right">{!! $comentario->created_at !!}</span>

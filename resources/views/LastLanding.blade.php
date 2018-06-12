@@ -75,21 +75,21 @@
 									<span class="fire_letter">
 										<span></span>
 										@switch($last->rate)
-										   @case(1)
-										      Quemenlo y tirenlo al rio
-										      @break
-										   @case(2)
-										      Carbonizado
-										      @break 
-										   @case(3)
-										         Tibio...
-										         @break
-										   @case(4)
-										      bien rostizado
-										      @break
-										   @case(5)
-										      bien cocido!
-										      @break
+										    @case(1)
+                              				   Malo
+                              				   @break
+                              				@case(2)
+                              				   Mediocre
+                              				   @break 
+                              				@case(3)
+                              				   OK
+                              				   @break
+                              				@case(4)
+                              				   Bueno
+                              				   @break
+                              				@case(5)
+                              				   Asombroso!
+                              				   @break
 										   @default
 										     
 										@endswitch

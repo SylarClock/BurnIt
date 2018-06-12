@@ -55,7 +55,8 @@ class AjaxFun extends Controller
 
         $posts = DB::table('posts')
                     ->select('id', 'title', 'portada')
-                    ->where('title', 'like', '%'. $like .'%')->get();
+                    ->where('title', 'like', '%'. $like .'%')
+                    ->where('active', 1)->get();
 
         $profiles = DB::table('users')
                         ->select('id', 'name', 'last_name', 'perfil')
