@@ -41,6 +41,15 @@ class AjaxFun extends Controller
 
     }
 
+    public function ChecarEmail(Request $request){
+        $repetido = DB::table('users')->where('email', $_POST['email'])->get();
+        if(count($repetido)> 0){
+            echo json_encode("Repetido");
+        }else{
+            echo json_encode("OK");
+        }
+    }
+
     public function search(Request $request){
         $like = $_POST['search'];
 
