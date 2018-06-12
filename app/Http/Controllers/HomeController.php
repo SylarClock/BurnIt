@@ -30,6 +30,10 @@ class HomeController extends Controller
         else{
             $LAST = DB::select('CALL sp_last_updated');
             $bests = DB::select('CALL sp_best_rating');
+            if(Auth::user()->tipo == "admin")
+            return view('aceptaRechaza', ['lastest' => $LAST,
+                                        'bests' => $bests]);
+            else
             return view('LastLanding', ['lastest' => $LAST,
                                         'bests' => $bests]);
         }

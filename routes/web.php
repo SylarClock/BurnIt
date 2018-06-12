@@ -20,7 +20,7 @@ Route::post('upload', 'AjaxFun@upload');//perfil
 Route::post('search', 'AjaxFun@search');//perfil
 Route::post('uploadPortada', 'AjaxFun@uploadPortada');//portada
 
-
+Route::post('actionAdmin', ['as' => 'actionAdmin', 'uses' => 'Admin@actionAdmin']);
 Route::resource('usuario', 'User');
 Route::resource('Review', 'Review');
 Route::resource('Comment', 'Comment');
