@@ -182,4 +182,6 @@
       });
    </script>
 
+	 <script src="{{ asset('js/validacionesForm.js')}}"></script>
+
 @endsection

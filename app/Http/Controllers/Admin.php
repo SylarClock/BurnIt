@@ -23,8 +23,8 @@ class Admin extends Controller
         // }
         if(isset($rechazar))
         {
-            //DB::table('posts')->where('id', $id)->update(['active' => false]);
-            DB::table('posts')->where('id', $id)->delete();
+            DB::table('posts')->where('id', $id)->update(['active' => false]);
+            //DB::table('posts')->where('id', $id)->delete();
         }
 
         return redirect('/');
