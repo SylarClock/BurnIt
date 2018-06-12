@@ -154,9 +154,9 @@
    				<div class="col-lg-12">
    				<div class="col-lg-12 comentarios-contenedor">
    					<div class="comentar" id="comment_made">
-                  {!!Form::open(['route' =>'Comment.store', 'method' => 'POST'])!!}
+                  {!!Form::open(['route' =>'Comment.store', 'method' => 'POST', 'onsubmit' => 'return validaComentario()'])!!}
 
-   						<textarea placeholder="Comenta" name="comentario"></textarea>
+   						<textarea placeholder="Comenta" name="comentario" id="txt_comentario" required></textarea>
    						<button type="submit" class="btn pull-right btn-warning">OK</button>
                      <input type="hidden" name="post_id" value="{!! $review[0]->id !!}">
    						
@@ -241,7 +241,6 @@
         });
       });
    </script>
-
-	
+   <script src="{{ asset('js/validacionesForm.js')}}"></script>
 
 @endsection

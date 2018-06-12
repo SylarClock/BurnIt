@@ -106,3 +106,12 @@ function validaResgistro()
     return validado;
     
 }
+
+function validaComentario()
+{
+    var comentario = $('#txt_comentario').val();
+
+    if($.trim(comentario) == '') {
+        return false;
+    }
+}
