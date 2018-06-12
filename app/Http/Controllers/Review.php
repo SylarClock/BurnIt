@@ -135,7 +135,7 @@ class Review extends Controller
         //     'users' => $user,
         // ]);
 
-        $review = DB::table('posts')->where('id', $id)->get();
+        $review = DB::table('posts')->where('id', $id)->where('active', '1')->get();
         $maker = DB::table('users')->select('id', 'name', 'last_name', 'perfil')->where('id', $review[0]->user_id)->get();
 
         $comentarios = DB::select('CALL sp_get_commentarios_post(?)', [$id]);
@@ -157,7 +157,11 @@ class Review extends Controller
         $review = DB::table('posts')->where('id', $id)->get();
         $maker = DB::table('users')->select('id', 'name', 'last_name', 'perfil')->where('id', $review[0]->user_id)->get();
 
-        return view('Review.editreview', ['review' => $review, 'maker' => $maker, 'categories' => $categories]);
+        if(Auth::user()->id == $maker->id)
+            return view('Review.editreview', ['review' => $review, 'maker' => $maker, 'categories' => $categories]);
+        else
+            return redirect('/');
+
     }
 
     /**
@@ -248,7 +252,8 @@ class Review extends Controller
         //
         $post = Posts::find($id);
         $id_usr = $post->user_id;
-        $post->delete();
+        $post->active = 0;
+        $post->save();
         return redirect('/usuario/'. $id_usr);
     }
 
