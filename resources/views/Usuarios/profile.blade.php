@@ -2,6 +2,7 @@
 
 @section('estilos')
 		<link rel="stylesheet" href="{{ asset('css/Profile.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ asset('css/datatables.css') }}"/>
 @endsection
 
 @section('title')
@@ -65,22 +66,55 @@
 		   		</div>
 		   	</div>
 		   </div>
+		   <div class="row">
+		   		<div class="col-lg-12">
+		   			<div class="col-lg-12" style="background-color: black;">
+		   				<h1>Criticas</h1>
+		   			</div>
+		   			<div class=" col-lg-12" style="background-color: black;">
+		   				<table id="reviewTb" class="dataTable table-responsive col-xs-12">
+		   					<thead>
+		   						<tr>
+		   							<th>Titulo</th>
+		   							<th>Descripción</th>
+		   							<th>Fecha de creación</th>
+		   							<th>Acciones</th>
+		   						</tr>
+		   					</thead>
+		   					<tbody>
+		   						@if(count($posts)>0)
+		   							@foreach ($posts as $post)
+		   						<tr>
+		   							<td style="background-image: url('{!! asset('uploads/Review/' . $post->portada) !!}');">
+		   								<a href="/Review/{!! $post->id !!}">{!! $post->title !!}</a>
+		   							</td>
+		   							<td>{!! $post->description !!}</td>
+		   							<td>asdasdsa</td>
+		   							<td>
+		   								<a href="/Review/{!! $post->id !!}/edit" class="col-xs-6 btn btn-warning"><i class="fa fa-pencil"></i> Editar</a>
+		   								{!! Form::open(['route'=> ['Review.destroy', $post->id], 'method' => 'DELETE']) !!}
+		   									<button type="submit" class="btn btn-danger col-xs-6"><i class="fa fa-trash"></i> Borrar</button>
+		   								{!! Form::close() !!}
+		   								
+		   							</td>
+		   						</tr>
+
+		   							@endforeach
+		   						@endif
+		   						
+		   					</tbody>
+		   				</table>
+		   			</div>
+		   		</div>
+		   		
+		   </div>
 	   </div>
-	   <div class="container bottom-info">
-		   	<div class="row" >
-			   	<div class="col-lg-12">
-			   		<div class="col-lg-6 text-center bi-lnd" style="background: black; ">
-			   			<h1 style="padding-top:0">30</h1>
-			   			<label style="color:white; font-size: 1.5em">Criticas</label>
-			   		</div>
-			   		<div class="col-lg-6 text-center bi-lnd" style="background: black;">
-			   			<h1 style="padding-top:0">98%</h1>
-			   			<label style="color:white; font-size: 1.5em">Rate</label>
-			   		</div>
-			   	</div>
-		   	</div>
-	   </div>
-	   
+
+	   <br>
+	   <br>
+	   <br>
+	   <br>
+	  
 
 	   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 		  <div class="modal-dialog" role="document">
@@ -168,7 +202,13 @@
 
 @section('scripts')
 	<script src="{{ asset('js/profile.js')}}"></script>
+	<script src="{{ asset('js/datatables.min.js')}}"></script>
 
+	<script>
+		$(document).ready(function() {
+		    $('#reviewTb').DataTable();
+		} );
+	</script>
 
 @endsection
 

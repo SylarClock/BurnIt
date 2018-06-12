@@ -65,8 +65,10 @@ class User extends Controller
         //traer datos del usuario
 
         $user = DB::table('users')->where('id', $id)->get();
+        $posts = DB::table('posts')->select('id', 'title', 'portada', 'description')->where('user_id', $id)->get();
         return view('Usuarios.profile', [
             'users' => $user,
+            'posts' => $posts,
         ]);
 
     }

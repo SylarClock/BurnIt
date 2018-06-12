@@ -241,6 +241,10 @@ class Review extends Controller
     public function destroy($id)
     {
         //
+        $post = Posts::find($id);
+        $id_usr = $post->user_id;
+        $post->delete();
+        return redirect('/usuario/'. $id_usr);
     }
 
     public function actionAdmin(Request $request)
