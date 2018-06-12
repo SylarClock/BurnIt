@@ -157,7 +157,7 @@ class Review extends Controller
         $review = DB::table('posts')->where('id', $id)->get();
         $maker = DB::table('users')->select('id', 'name', 'last_name', 'perfil')->where('id', $review[0]->user_id)->get();
 
-        if(Auth::user()->id == $maker->id)
+        if(Auth::user()->id == $review[0]->user_id)
             return view('Review.editreview', ['review' => $review, 'maker' => $maker, 'categories' => $categories]);
         else
             return redirect('/');
