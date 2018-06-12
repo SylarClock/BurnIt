@@ -96,6 +96,7 @@ class Review extends Controller
             'user_id'   =>Auth::user()->id,
             'rate' => $rate,
             'category_id' => 1,
+            'activo' => false,
         ]);
         
         return redirect('/Review/'. $last_id);

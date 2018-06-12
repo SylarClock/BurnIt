@@ -46,6 +46,7 @@ class User extends Controller
                 'email' => $request['email'], 
                 'password' => bcrypt($request['password']),
                 'birth_day' =>$request['birthdate'],
+                'tipo' => 'normal'
             ]);
 
             return redirect('/');//redireccionamos y mandamos un parametro llamado message
