@@ -227,5 +227,20 @@ class Review extends Controller
         //
     }
 
+    public function actionAdmin(Request $request)
+    {
+        $id = $request['id'];
 
+        if($request['aceptar'])
+        {
+            $review = Review::find($id); 
+            $review->activo = true; 
+            $review->save();
+        }
+        if($request['rechazar'])
+        {
+            $review = Review::find($id); 
+            $review->delete();
+        }
+    }
 }
