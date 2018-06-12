@@ -13,14 +13,29 @@ var options = {
     }
   };
 
- $("#foto").click(function(){
- 	debugger;
- 	 $(this).parent().parent().ajaxForm(options);
+ $("#btn_prof_img").click(function(){
+ 	var file = $("#perfil").val();
+ 	if(file ==""){
+ 		alert('Selciona una foto primero');
+ 		return false;
+ 	}
+ 	else
+ 	 	$(this).parent().parent().ajaxForm(options);
+
+ });
+
+ $("#btn_port_img").click(function(){
+ 	var file = $("#portada_fl").val();
+ 	if(file ==""){
+ 		alert('Selciona una foto primero');
+ 		return false;
+ 	}
+ 	else
+ 	 	$(this).parent().parent().ajaxForm(options);
 
  });
 
 $("#grdMdl").click(function(){
-	debugger;
 
 	var nombre = $("#nombre").val();
 	var apellido = $("#Apellido").val();
@@ -43,54 +58,42 @@ $("#grdMdl").click(function(){
 		birth_day: birth,
 		photo: perfil
 	}
-	debugger;
 
-	form = new FormData();
-	form.append('id', id);
-	form.append('name', nombre);
-	form.append('image', perfil);
+	if(nombre == "" || apellido == "" || email == "" ||birth == "" )
+	{
+		alert('Llena todos los campos');
 
+	}else{
 
-	$.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': token
-        }
-    });
+			form = new FormData();
+			form.append('id', id);
+			form.append('name', nombre);
+			form.append('image', perfil);
 
 
+			$.ajaxSetup({
+		        headers: {
+		            'X-CSRF-TOKEN': token
+		        }
+		    });
+
+			$.ajax({
+				url: url,
+				method: "POST",
+				dataType: "json",
+				data: userEdit,
+				success: function(data){
+					debugger;
+				    location.reload();
+				},
+				error: function(e){
+					debugger;
+				    console.log(e.message);
+				}
+			});
+	}
 
 
-
-
-	$.ajax({
-		url: url,
-		method: "POST",
-		dataType: "json",
-		data: userEdit,
-		success: function(data){
-			debugger;
-		    location.reload();
-		},
-		error: function(e){
-			debugger;
-		    console.log(e.message);
-		}
-	});
-
-	// $.ajax({
-	// 	url: url,
-	// 	method: "POST",
-	// 	dataType: "json",
-	// 	data: userEdit,
-	// 	success: function(data){
-	// 		debugger;
-	// 	    location.reload();
-	// 	},
-	// 	error: function(e){
-	// 		debugger;
-	// 	    console.log(e.message);
-	// 	}
-	// });
-
+	
 
 });

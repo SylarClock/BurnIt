@@ -163,7 +163,7 @@
 		      					  <input type="file" name="file" class="form-control" id="perfil">
 		      					</div>
 		      					<div class="col-sm-2">
-						    		<input type="submit" value="Subir" class="btn btn-warning col-xs-12" name="submit">
+						    		<input id="btn_prof_img" type="submit" value="Subir" class="btn btn-warning col-xs-12" name="submit">
 		      					</div>
 		      				</div>
 							<input type="hidden" value="{{ csrf_token() }}" name="_token">
@@ -173,10 +173,10 @@
 		      				<div class="form-group">
 		      					<label for="perfil" class="col-sm-2 control-label">Portada</label>
 		      					<div class="col-sm-8">
-		      					  <input type="file" name="file" class="form-control" >
+		      					  <input type="file" name="file" class="form-control" id="portada_fl">
 		      					</div>
 		      					<div class="col-sm-2">
-						    		<input type="submit" value="Subir" class="btn btn-warning col-xs-12" name="submit">
+						    		<input id="btn_port_img" type="submit" value="Subir" class="btn btn-warning col-xs-12" name="submit">
 		      					</div>
 		      				</div>
 							<input type="hidden" value="{{ csrf_token() }}" name="_token">

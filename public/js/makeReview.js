@@ -43,12 +43,13 @@ $("#publicar").click(function(){
 		var title = $("#Titulo").val();
 		var bloq1 = $("#bloqTxt1").val();
 		var file1 = $("#imgFile1").val();
+		var cover = $("#backCover").val();
 		
-		var bloq1 = $("#bloqTxt2").val();
-		var file1 = $("#imgFile2").val();
+		var bloq2 = $("#bloqTxt2").val();
+		var file2 = $("#imgFile2").val();
 
-		var bloq1 = $("#bloqTxt3").val();
-		var file1 = $("#imgFile3").val();
+		var bloq3 = $("#bloqTxt3").val();
+		var file3 = $("#imgFile3").val();
 
 		var cal = $("#calif").val();
 		var desc = $("#descrip").val();
@@ -56,6 +57,14 @@ $("#publicar").click(function(){
 		var bckg_h1 = $("#bckg_1");
 		var bckg_h2 = $("#bckg_2");
 
+		var img_1 = $("#img_1").attr('src');
 
+
+	if(title=="" || bloq1=="" || desc=="" || img_1==""){
+		alert('Titulo, portada, primer bloque de texto, primera imagen y descripción es obligatorio');
+
+		return false;
+	}else{
+	}
 
 });
