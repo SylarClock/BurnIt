@@ -5,7 +5,7 @@
 
 <div class="container">
 
-	{!!Form::open(['route' =>'usuario.store', 'method' => 'POST'])!!}
+	{!!Form::open(['route' =>'usuario.store', 'method' => 'POST', 'onsubmit' => 'return validaResgistro()'])!!}
 		<div class="form-group row">
 			<h2>
 				¿Listo para unirte a BURNIT?
@@ -76,4 +76,4 @@
 
 		<script src="{{ asset('js/jquery.js')}}"></script>
 		<script src="{{ asset('js/bootstrap.min.js')}}"></script>
-		<script src="{{ asset('js/registro.js')}}"></script>
+		<script src="{{ asset('js/validacionesForm.js')}}"></script>
